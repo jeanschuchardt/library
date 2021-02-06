@@ -25,4 +25,5 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    public Book findByTitle(String my_book) { return bookRepository.findByTitle(my_book);}
 }

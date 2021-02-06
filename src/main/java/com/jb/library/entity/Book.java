@@ -18,24 +18,30 @@ import java.util.List;
 @Table(name = "book")
 public class Book {
     @Id
-    @GeneratedValue
+    //@GeneratedValue
+//    @SequenceGenerator( name = "BOOK_ID", sequenceName = "BOOK_SEQ", allocationSize = 1 )
+//    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "BOOK_ID" )
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private int number;
     private String title;
     private  int pageCount;
     @OneToMany(
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
     private  List<Author> authorList;
+
+
     @OneToMany(
             cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = true//,
+            //fetch = FetchType.EAGER
     )
     private  List<Gener> genersList;
 //
-//    private  String  authors;
-//    private  String geners;
+
 
 
 }
