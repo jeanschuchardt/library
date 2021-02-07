@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Borrower {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    int Long;
+    Long id;
     String firstName;
     String lastName;
 

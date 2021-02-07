@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/borrower")
@@ -21,9 +22,9 @@ public class BorrowerController {
         return new ResponseEntity<>(borrowerService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/findByName")
-    ResponseEntity<Borrower> findBorrowerByName(@RequestParam String firstName,@RequestParam String lastName){
-        return new ResponseEntity <> (borrowerService.findByName(firstName,lastName), HttpStatus.OK);
+    @GetMapping("/findByID")
+    ResponseEntity<Borrower> findBorrowerByid(@RequestParam Long id){
+        return new ResponseEntity<>(borrowerService.findByID(id), HttpStatus.OK);
     }
 
     @PostMapping("/addBook")
