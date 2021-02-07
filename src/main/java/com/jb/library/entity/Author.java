@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @Getter
@@ -20,6 +21,9 @@ public class Author {
     private Long id;
     String firstName;
     String lastName;
+
+    @ManyToMany(mappedBy = "authorList")
+    private List<Book> bookList;
 
     @Override
     public String toString() {

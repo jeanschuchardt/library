@@ -26,21 +26,20 @@ public class Book {
     private int number;
     private String title;
     private  int pageCount;
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.EAGER
-    )
+
+    //@OneToMany(targetEntity = Author.class, cascade = CascadeType.ALL)
+   // @JoinColumn(name = "book_fk", referencedColumnName = "id")
+    @ManyToMany
     private  List<Author> authorList;
 
-
-    @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true//,
-            //fetch = FetchType.EAGER
-    )
+   // @OneToMany(targetEntity = Gener.class, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "gener_fk", referencedColumnName = "id")
+    @ManyToMany
     private  List<Gener> genersList;
-//
+
+//    @ManyToMany(mappedBy = "books")
+//    private List<LoanRecord> loadRecord;
+
 
 
 

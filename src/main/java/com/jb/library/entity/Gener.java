@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @Getter
@@ -21,5 +22,9 @@ public class Gener {
     private Long id;
     @Column(unique=true)
     String name;
+
+    @ManyToMany(mappedBy = "genersList")
+    private List<Book> bookList;
+
 
 }
