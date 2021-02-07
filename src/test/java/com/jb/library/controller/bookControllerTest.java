@@ -1,4 +1,4 @@
-package com.jb.library.controler;
+package com.jb.library.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jb.library.entity.Author;

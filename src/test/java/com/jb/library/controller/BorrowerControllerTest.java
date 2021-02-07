@@ -7,4 +7,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class BorrowerControllerTest {
 
 
+    @Test
+    void getAllBorrowers() {
+    }
+
+    @Test
+    void findBorrowerByid() {
+    }
+
+    @Test
+    void create() {
+    }
 }
