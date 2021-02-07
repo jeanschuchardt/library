@@ -102,7 +102,6 @@ public class bookControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/books/findByTitle?title=Test4").
                 contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                //.andExpect(jsonPath("$", hasSize(1)))
                 .andExpect(jsonPath("$.number").value(5545))
                 .andExpect(jsonPath("$.title").value("Test4"))
                 .andExpect(jsonPath("$.pageCount").value(9999))
