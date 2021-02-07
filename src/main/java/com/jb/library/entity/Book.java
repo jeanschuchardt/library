@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -29,16 +31,17 @@ public class Book {
 
     //@OneToMany(targetEntity = Author.class, cascade = CascadeType.ALL)
    // @JoinColumn(name = "book_fk", referencedColumnName = "id")
-    @ManyToMany
-    private  List<Author> authorList;
+    @ManyToMany (cascade =  {CascadeType.PERSIST,CascadeType.MERGE})
+    private  Set<Author> authorList = new HashSet<>();
 
    // @OneToMany(targetEntity = Gener.class, cascade = CascadeType.ALL)
+   // @OneToMany(targetEntity = Gener.class, cascade = CascadeType.ALL)
 //    @JoinColumn(name = "gener_fk", referencedColumnName = "id")
-    @ManyToMany
-    private  List<Gener> genersList;
+    @ManyToMany(cascade =  {CascadeType.PERSIST,CascadeType.MERGE})
+    private Set<Gener> genersList = new HashSet<>();
 
-//    @ManyToMany(mappedBy = "books")
-//    private List<LoanRecord> loadRecord;
+    @ManyToMany(mappedBy = "books")
+    private List<LoanRecord> loadRecord;
 
 
 

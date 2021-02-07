@@ -11,7 +11,9 @@ import com.jb.library.repository.BookRepository;
 
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -30,7 +32,7 @@ public class BookServiceTest {
     void findAllBooks() {
         Author a  =  Author.builder().firstName("jean").lastName("burda").build();
         Author b  =  Author.builder().firstName("emanuel").lastName("burda").build();
-        List<Author> authorList = new ArrayList<>();
+        Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
 
@@ -56,7 +58,7 @@ public class BookServiceTest {
     void findBookByTitle() {
         Author a  =  Author.builder().firstName("jean").lastName("burda").build();
         Author b  =  Author.builder().firstName("emanuel").lastName("burda").build();
-        List<Author> authorList = new ArrayList<>();
+        Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
 
@@ -82,7 +84,7 @@ public class BookServiceTest {
         BookService bookService = new BookService(bookRepository);
         Author a  =  Author.builder().firstName("jean").lastName("burda").build();
         Author b  =  Author.builder().firstName("emanuel").lastName("burda").build();
-        List<Author> authorList = new ArrayList<>();
+        Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
 

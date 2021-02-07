@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -23,12 +25,13 @@ public class LoanRecord {
 
     @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "book_fk", referencedColumnName = "id")
-    private List<Book> books;
+    private Set<Book> books = new HashSet<>();
 
 
     @ManyToOne(targetEntity = Borrower.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "borrower_fk", referencedColumnName = "id")
-    private List<Borrower> borrowers;
+    private Set<Borrower> borrowers  = new HashSet<>();
+
 
 
 

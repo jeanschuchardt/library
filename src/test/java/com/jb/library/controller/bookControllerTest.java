@@ -16,7 +16,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 import static org.hamcrest.Matchers.hasSize;
@@ -47,7 +49,7 @@ public class bookControllerTest {
         List<Book> booksList  =  new ArrayList<Book>();
         Author a  =  Author.builder().firstName("jean").lastName("burda").build();
         Author b  =  Author.builder().firstName("emanuel").lastName("burda").build();
-        List<Author> authorList = new ArrayList<>();
+        Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
 
@@ -86,7 +88,7 @@ public class bookControllerTest {
         List<Book> booksList  =  new ArrayList<Book>();
         Author a  =  Author.builder().firstName("jean").lastName("burda").build();
         Author b  =  Author.builder().firstName("emanuel").lastName("burda").build();
-        List<Author> authorList = new ArrayList<>();
+        Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
         Book book = Book.builder().
@@ -112,7 +114,7 @@ public class bookControllerTest {
     void successCreateABook() throws  Exception{
         Author a  =  Author.builder().firstName("jean").lastName("burda").build();
         Author b  =  Author.builder().firstName("emanuel").lastName("oliveira").build();
-        List<Author> authorList = new ArrayList<>();
+        Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
 

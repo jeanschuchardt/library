@@ -7,7 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Builder
 @Getter
@@ -20,11 +22,11 @@ public class Gener {
     @Id
     @GeneratedValue
     private Long id;
-    @Column(unique=true)
+    //@Column(unique=true)
     String name;
 
     @ManyToMany(mappedBy = "genersList")
-    private List<Book> bookList;
+    private Set<Book> bookList = new HashSet<>();
 
 
 }
