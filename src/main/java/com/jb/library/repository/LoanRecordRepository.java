@@ -8,5 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository("loanRecordRepository")
 public interface LoanRecordRepository extends JpaRepository<LoanRecord, Long> {
 
-
+    Borrower findByid(Long id);
 }

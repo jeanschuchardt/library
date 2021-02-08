@@ -1,5 +1,7 @@
 package com.jb.library.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,9 +20,11 @@ import java.util.Set;
 
 @Entity(name = "Author")
 @Table(name = "author")
+@JsonIgnoreProperties("bookList")
 public class Author {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
+    @JsonIgnore
     private Long id;
     String firstName;
     String lastName;
