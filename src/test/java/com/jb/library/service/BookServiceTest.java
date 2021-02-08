@@ -30,13 +30,14 @@ public class BookServiceTest {
 
     @Test
     void findAllBooks() {
-        Author a  =  Author.builder().firstName("jean").lastName("burda").build();
-        Author b  =  Author.builder().firstName("emanuel").lastName("burda").build();
+        Author a  =  Author.builder().firstName("Roberto").lastName("Petri").build();
+        Author b  =  Author.builder().firstName("Emanuel").lastName("Silva").build();
         Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
 
         Book bookSample = Book.builder()
+                .id(100)
                 .title("Test2")
                 .number(1001)
                 .authorList(authorList)
@@ -50,19 +51,20 @@ public class BookServiceTest {
 
         assertEquals(bookSample.getTitle(),lastBook.getTitle());
         assertEquals(bookSample.getNumber(),lastBook.getNumber());
-        assertEquals(bookSample.getAuthorList().toString(),lastBook.getAuthorList().toString());
+
 
     }
 
     @Test
     void findBookByTitle() {
-        Author a  =  Author.builder().firstName("jean").lastName("burda").build();
-        Author b  =  Author.builder().firstName("emanuel").lastName("burda").build();
+        Author a  =  Author.builder().firstName("Anna").lastName("Pet").build();
+        Author b  =  Author.builder().firstName("Rafael").lastName("Carvalho").build();
         Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
 
         Book bookSample = Book.builder()
+                .id(1000)
                 .title("my book")
                 .number(1001)
                 .authorList(authorList)
@@ -75,20 +77,21 @@ public class BookServiceTest {
 
         assertEquals(bookSample.getTitle(),lastBook.getTitle());
         assertEquals(bookSample.getNumber(),lastBook.getNumber());
-        assertEquals(bookSample.getAuthorList().toString(),lastBook.getAuthorList().toString());
+
 
     }
 
     @Test
     void saveBook() {
         BookService bookService = new BookService(bookRepository);
-        Author a  =  Author.builder().firstName("jean").lastName("burda").build();
+        Author a  =  Author.builder().firstName("Roberto").lastName("Petri").build();
         Author b  =  Author.builder().firstName("emanuel").lastName("burda").build();
         Set<Author> authorList = new HashSet<>();
         authorList.add(a);
         authorList.add(b);
 
         Book todoSample = Book.builder()
+                .id(101)
                 .title("Test2")
                 .number(1001)
                 .authorList(authorList)

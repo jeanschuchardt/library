@@ -1,8 +1,8 @@
 package com.jb.library.service;
 
+import com.jb.library.dto.BookBorrrower;
 import com.jb.library.dto.BorrowerBooks;
 import com.jb.library.entity.Book;
-import com.jb.library.dto.BookBorrrower;
 import com.jb.library.entity.Borrower;
 import com.jb.library.entity.LoanRecord;
 import com.jb.library.repository.LoanRecordRepository;
@@ -42,15 +42,7 @@ public class LoanRecordService {
     }
 
 
-    public List<LoanRecord> findAll2() {
-        loanRecordRepository.findAll().forEach(loanRecord -> loanRecord.getBooks().getTitle());
-
-        return loanRecordRepository.findAll();
-
-    }
-
     public List<LoanRecord> findAll() {
-
         return loanRecordRepository.findAll();
     }
 
@@ -59,6 +51,7 @@ public class LoanRecordService {
     }
 
     public LoanRecord findByID(Long id) {
+
         return loanRecordRepository.findByid(id);
     }
 
@@ -95,7 +88,6 @@ public class LoanRecordService {
                 .fullName(borrower.getFullName())
                 .book(books)
                 .build();
-
 
         return borrowerBooks;
     }

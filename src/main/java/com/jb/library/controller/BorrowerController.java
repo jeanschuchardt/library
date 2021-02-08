@@ -31,11 +31,6 @@ public class BorrowerController {
         return new ResponseEntity<>(borrowerService.findByFirstNameAndLastName(firstName, lastName), HttpStatus.OK);
     }
 
-//    @GetMapping("/findByFullName")
-//    ResponseEntity<Borrower> findByFullName(@RequestParam String fullName) {
-//        return new ResponseEntity<>(borrowerService.findByFullName(fullName), HttpStatus.OK);
-//    }
-
     @PostMapping("/addBorrower")
     ResponseEntity<Borrower> create(@RequestBody Borrower borrower) {
         return new ResponseEntity<>(borrowerService.save(borrower), HttpStatus.CREATED);
