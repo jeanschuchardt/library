@@ -23,7 +23,7 @@ import java.util.Set;
 @JsonIgnoreProperties("bookList")
 public class Author {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @JsonIgnore
     private Long id;
     String firstName;

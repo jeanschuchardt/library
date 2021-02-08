@@ -10,4 +10,6 @@ public interface BorrowerRepository extends JpaRepository<Borrower, Integer> {
     public Borrower findByFirstNameAndLastName(String firstName, String lastName);
 
     public Borrower findById(int borrowerId);
+
+
 }

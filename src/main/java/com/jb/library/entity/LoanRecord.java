@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Table(name = "loan_record")
 public class LoanRecord {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)

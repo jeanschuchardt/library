@@ -1,7 +1,8 @@
 package com.jb.library.service;
 
+import com.jb.library.dto.BorrowerBooks;
 import com.jb.library.entity.Book;
-import com.jb.library.entity.BookBorrrower;
+import com.jb.library.dto.BookBorrrower;
 import com.jb.library.entity.Borrower;
 import com.jb.library.entity.LoanRecord;
 import com.jb.library.repository.LoanRecordRepository;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -26,9 +28,9 @@ public class LoanRecordService {
 
     public BookBorrrower findByBooks(String book) {
         Book byTitle = bookService.findByTitle(book);
-        List<LoanRecord> temp =  loanRecordRepository.findByBooks(byTitle);
-        List<Borrower> temp2 =  new ArrayList<>();
-        for(LoanRecord t :temp){
+        List<LoanRecord> temp = loanRecordRepository.findByBooks(byTitle);
+        List<Borrower> temp2 = new ArrayList<>();
+        for (LoanRecord t : temp) {
             temp2.add(t.getBorrowers());
         }
         BookBorrrower bookBorrrower = BookBorrrower.builder()
@@ -75,10 +77,26 @@ public class LoanRecordService {
                 .books(bookService.findById(bookId))
                 .borrowers(borrowerService.findById(borrowerID))
                 .build();
-
         return loanRecordRepository.save(temp);
-
     }
 
+    public BorrowerBooks findByName(String fullName) throws Exception {
 
+        Borrower borrower = borrowerService.findByFullName(fullName);
+        List<LoanRecord> temp = loanRecordRepository.findByBorrowers(borrower);
+
+        HashMap<Integer, String> books = new HashMap<>();
+
+        for (LoanRecord t : temp) {
+            books.put(t.getBooks().getId(), t.getBooks().getTitle());
+        }
+
+        BorrowerBooks borrowerBooks = BorrowerBooks.builder()
+                .fullName(borrower.getFullName())
+                .book(books)
+                .build();
+
+
+        return borrowerBooks;
+    }
 }

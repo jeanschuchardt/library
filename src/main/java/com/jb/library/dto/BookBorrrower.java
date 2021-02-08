@@ -1,5 +1,6 @@
-package com.jb.library.entity;
+package com.jb.library.dto;
 
+import com.jb.library.entity.Borrower;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

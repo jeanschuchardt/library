@@ -1,8 +1,9 @@
 package com.jb.library.controller;
 
-import com.jb.library.entity.BookBorrrower;
+import com.jb.library.dto.BorrowerBooks;
+import com.jb.library.dto.BookBorrrower;
 import com.jb.library.entity.LoanRecord;
-import com.jb.library.entity.Record;
+import com.jb.library.dto.Record;
 import com.jb.library.service.LoanRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,10 +29,14 @@ public class LoanRecordController {
         return new ResponseEntity<>(loanRecordService.save(record.getBookid(), record.getBorrowerid()), HttpStatus.CREATED);
     }
 
-
     @GetMapping("/findByBookName")
-    ResponseEntity<BookBorrrower> findBookName(@RequestParam String book) {
+    ResponseEntity<BookBorrrower> findByBookName(@RequestParam String book) {
         return new ResponseEntity<>(loanRecordService.findByBooks(book), HttpStatus.OK);
+    }
+
+    @GetMapping("/findByBorrowerName")
+    ResponseEntity<BorrowerBooks> findByBorrowerName(@RequestParam String fullName) throws Exception {
+        return new ResponseEntity<>(loanRecordService.findByName(fullName), HttpStatus.OK);
     }
 
 }

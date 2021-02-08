@@ -21,7 +21,7 @@ import java.util.Set;
 @Table(name = "borrower",uniqueConstraints={@UniqueConstraint(columnNames = {"firstName" , "lastName"})})
 public class Borrower {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     int id;
 
     String firstName;
