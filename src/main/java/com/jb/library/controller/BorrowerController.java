@@ -23,11 +23,15 @@ public class BorrowerController {
     }
 
     @GetMapping("/findByID")
-    ResponseEntity<Borrower> findBorrowerByid(@RequestParam Long id){
-        return new ResponseEntity<>(borrowerService.findByID(id), HttpStatus.OK);
+    ResponseEntity<Borrower> findBorrowerByid(@RequestParam int id){
+        return new ResponseEntity<>(borrowerService.findById(id), HttpStatus.OK);
+    }
+    @GetMapping("/findByName")
+    ResponseEntity<Borrower> findBorrowerByName(@RequestParam String firstName,@RequestParam String lastName){
+        return new ResponseEntity<>(borrowerService.findByFirstNameAndLastName(firstName,lastName), HttpStatus.OK);
     }
 
-    @PostMapping("/addBook")
+    @PostMapping("/addBorrower")
     ResponseEntity<Borrower> create(@RequestBody Borrower borrower) {
         return new ResponseEntity<>(borrowerService.save(borrower), HttpStatus.CREATED);
     }

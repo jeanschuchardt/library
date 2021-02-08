@@ -1,35 +1,84 @@
 package com.jb.library.service;
 
+import com.jb.library.entity.Book;
+import com.jb.library.entity.BookBorrrower;
 import com.jb.library.entity.Borrower;
 import com.jb.library.entity.LoanRecord;
 import com.jb.library.repository.LoanRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class LoanRecordService {
     @Autowired
-    private LoanRecordRepository    loanRecordRepository;
+    private LoanRecordRepository loanRecordRepository;
+    @Autowired
+    private BookService bookService;
+    @Autowired
+    private BorrowerService borrowerService;
 
     public LoanRecordService(LoanRecordRepository loanRecordRepository) {
         this.loanRecordRepository = loanRecordRepository;
     }
 
-    public List<LoanRecord> findAll(){ return loanRecordRepository.findAll();    }
+    public BookBorrrower findByBooks(String book) {
+        Book byTitle = bookService.findByTitle(book);
+        List<LoanRecord> temp =  loanRecordRepository.findByBooks(byTitle);
+        List<Borrower> temp2 =  new ArrayList<>();
+        for(LoanRecord t :temp){
+            temp2.add(t.getBorrowers());
+        }
+        BookBorrrower bookBorrrower = BookBorrrower.builder()
+                .title(byTitle.getTitle())
+                .borrowerList(temp2)
+                .build();
 
-    public LoanRecord save(LoanRecord loanRecord){
+        return bookBorrrower;
+    }
+
+
+    public List<LoanRecord> findAll2() {
+        loanRecordRepository.findAll().forEach(loanRecord -> loanRecord.getBooks().getTitle());
+
+        return loanRecordRepository.findAll();
+
+    }
+
+    public List<LoanRecord> findAll() {
+
+        return loanRecordRepository.findAll();
+    }
+
+    public LoanRecord save(LoanRecord loanRecord) {
         return loanRecordRepository.save(loanRecord);
     }
 
-    public Borrower findByID(Long id) { return loanRecordRepository.findByid(id);   }
+    public LoanRecord findByID(Long id) {
+        return loanRecordRepository.findByid(id);
+    }
+
+    public LoanRecord save(int bookId, int borrowerID) throws Exception {
+
+        Book b = bookService.findById(bookId);
+        Borrower bw = borrowerService.findById(borrowerID);
+
+        if (b == null) {
+            throw new Exception();
+        }
+        if (bw == null) {
+            throw new Exception();
+        }
+        LoanRecord temp = LoanRecord.builder()
+                .books(bookService.findById(bookId))
+                .borrowers(borrowerService.findById(borrowerID))
+                .build();
+
+        return loanRecordRepository.save(temp);
+
+    }
 
 
-
-/*
-    Create a loan record for a given book/borrower
-* Get a list of past borrowers for a book
-* Get a list of past books borrowed by a given borrower
-*/
 }

@@ -23,8 +23,8 @@ public class BorrowerService {
         return borrowerRepository.save(borrower);
     }
 
-    public Borrower findByID(Long id) { return borrowerRepository.findByid(id);   }
 
+    public Borrower findByFirstNameAndLastName(String firstName, String lastName) {return borrowerRepository.findByFirstNameAndLastName(firstName,lastName);    }
 
-    //public Borrower findByName(String firstName, String lastName) {return borrowerRepository.findByName( firstName,  lastName);    }
+    public Borrower findById(int borrowerId) { return borrowerRepository.findById(borrowerId);    }
 }

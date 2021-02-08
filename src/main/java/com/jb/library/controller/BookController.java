@@ -23,7 +23,6 @@ public class BookController {
     ResponseEntity<Book> findBookByTitle(@RequestParam String title){
         return new ResponseEntity <> (bookService.findByTitle(title), HttpStatus.OK);
     }
-
     @PostMapping("/addBook")
     ResponseEntity<Book> create(@RequestBody Book book) {
         return new ResponseEntity<>(bookService.save(book), HttpStatus.CREATED);

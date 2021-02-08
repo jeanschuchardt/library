@@ -25,7 +25,7 @@ import java.util.Set;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private int id;
     private int number;
     private String title;
     private  int pageCount;
@@ -39,9 +39,8 @@ public class Book {
     private Set<Gener> genersList = new HashSet<>();
 
     @ManyToMany(mappedBy = "books")
-    private List<LoanRecord> loadRecord;
-
-
+    @JsonIgnore
+    private Set<LoanRecord> loadRecord =  new HashSet<>();
 
 
 }
