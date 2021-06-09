@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "LoanRecord")
+@Entity
 @Table(name = "loan_record")
 public class LoanRecord {
     @Id

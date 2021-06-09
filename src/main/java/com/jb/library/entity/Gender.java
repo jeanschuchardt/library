@@ -17,15 +17,14 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "gener")
-public class Gener {
+@Table(name = "gender")
+public class Gender {
     @Id
     @GeneratedValue
     @JsonIgnore
     private int id;
 
-    //@Column(unique=true)
-    @Column
+    @Column(unique=true)
     private String name;
 
     @ManyToMany(targetEntity = Book.class,mappedBy = "genersList")

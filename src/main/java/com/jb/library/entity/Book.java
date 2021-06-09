@@ -32,8 +32,8 @@ public class Book {
     @ManyToMany(targetEntity = Author.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Author> authorList = new HashSet<>();
 
-    @ManyToMany(targetEntity = Gener.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Gener> genersList = new HashSet<>();
+    @ManyToMany(targetEntity = Gender.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private Set<Gender> genersList = new HashSet<>();
 
     @OneToMany(mappedBy = "books")
     private Set<LoanRecord> loadRecord = new HashSet<>();
