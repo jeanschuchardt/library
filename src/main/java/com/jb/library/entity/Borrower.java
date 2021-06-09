@@ -25,8 +25,7 @@ public class Borrower {
     @Column
     private int borrowingLimit = 3;
 
-    @ManyToMany(mappedBy = "borrowers")
-    @JsonIgnore
+    @OneToMany(mappedBy = "borrowers")
     private Set<LoanRecord> records = new HashSet<>();
 
     public String getFullName() {

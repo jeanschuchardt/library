@@ -26,12 +26,10 @@ public class Book {
     @ManyToMany(targetEntity = Author.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Author> authorList = new HashSet<>();
 
-
     @ManyToMany(targetEntity = Gener.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Gener> genersList = new HashSet<>();
 
-    @ManyToMany(mappedBy = "books")
-    @JsonIgnore
+    @OneToMany(mappedBy = "books")
     private Set<LoanRecord> loadRecord = new HashSet<>();
 
 

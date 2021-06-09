@@ -20,15 +20,13 @@ public class LoanRecord {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "book_fk", referencedColumnName = "id")
-    @NotNull
     private Book books;
 
 
     @ManyToOne(targetEntity = Borrower.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "borrower_fk", referencedColumnName = "id")
-    @NotNull
     private Borrower borrowers;
 
 }
