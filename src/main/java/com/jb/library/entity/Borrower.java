@@ -1,7 +1,10 @@
 package com.jb.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,6 +12,9 @@ import java.util.Set;
 
 @Entity
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 //@Table(name = "borrower", uniqueConstraints = {@UniqueConstraint(columnNames = {"firstName", "lastName"})})
 @Table(name = "borrower")
 public class Borrower {

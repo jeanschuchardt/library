@@ -13,7 +13,9 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "gener")
 public class Gener {

@@ -37,7 +37,7 @@ public class BookServiceTest {
         authorList.add(b);
 
         Book bookSample = Book.builder()
-                .id(100)
+
                 .title("Test2")
                 .number(1001)
                 .authorList(authorList)
@@ -64,7 +64,7 @@ public class BookServiceTest {
         authorList.add(b);
 
         Book bookSample = Book.builder()
-                .id(1000)
+                //.id(1000)
                 .title("my book")
                 .number(1001)
                 .authorList(authorList)
@@ -91,7 +91,7 @@ public class BookServiceTest {
         authorList.add(b);
 
         Book todoSample = Book.builder()
-                .id(101)
+                //.id(101)
                 .title("Test2")
                 .number(1001)
                 .authorList(authorList)
