@@ -50,7 +50,7 @@ public class LoanRecordService {
         return loanRecordRepository.save(loanRecord);
     }
 
-    public LoanRecord findByID(Long id) {
+    public LoanRecord findByID(int id) {
 
         return loanRecordRepository.findByid(id);
     }

@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository("loanRecordRepository")
-public interface LoanRecordRepository extends JpaRepository<LoanRecord, Long> {
+public interface LoanRecordRepository extends JpaRepository<LoanRecord, Integer> {
 
-    LoanRecord findByid(Long id);
+    LoanRecord findByid(Integer id);
 
     List<LoanRecord> findByBooks(Book book);
 
