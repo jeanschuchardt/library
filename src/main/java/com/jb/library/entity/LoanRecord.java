@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class LoanRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private int id;
 
     @ManyToOne(targetEntity = Book.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "book_fk", referencedColumnName = "id")

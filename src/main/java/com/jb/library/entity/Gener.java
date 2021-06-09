@@ -5,30 +5,26 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@Builder
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 
-@Entity(name = "Gener")
-@Table(name = "Gener")
+@Entity
+@Table(name = "gener")
 public class Gener {
     @Id
     @GeneratedValue
     @JsonIgnore
-    private Long id;
+    private int id;
+
     //@Column(unique=true)
-    String name;
+    @Column
+    private String name;
 
     @ManyToMany(targetEntity = Book.class,mappedBy = "genersList")
     @JsonIgnore

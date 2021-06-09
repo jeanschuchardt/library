@@ -1,39 +1,35 @@
 package com.jb.library.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
 import javax.persistence.*;
-import java.security.PublicKey;
 import java.util.HashSet;
 import java.util.Set;
 
-
-@Builder
-@Getter
-@AllArgsConstructor
-@NoArgsConstructor
-
-@Entity(name = "Borrower")
-@Table(name = "borrower",uniqueConstraints={@UniqueConstraint(columnNames = {"firstName" , "lastName"})})
+@Entity
+@Data
+//@Table(name = "borrower", uniqueConstraints = {@UniqueConstraint(columnNames = {"firstName", "lastName"})})
+@Table(name = "borrower")
 public class Borrower {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    String firstName;
-    String lastName;
+    @Column
+    private String firstName;
 
-    int borrowingLimit = 3;
+    @Column
+    private String lastName;
+
+    @Column
+    private int borrowingLimit = 3;
 
     @ManyToMany(mappedBy = "borrowers")
     @JsonIgnore
-    private Set<LoanRecord> records =  new HashSet<>();
+    private Set<LoanRecord> records = new HashSet<>();
 
-    public String getFullName(){
-        return firstName +' '+lastName;
+    public String getFullName() {
+        return firstName + ' ' + lastName;
     }
 }
