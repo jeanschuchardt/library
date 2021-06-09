@@ -20,7 +20,7 @@ import java.util.Set;
 @Table(name = "gender")
 public class Gender {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore
     private int id;
 
