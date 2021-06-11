@@ -1,6 +1,6 @@
 package com.jb.library.controller;
 
-import com.jb.library.entity.Page;
+import com.jb.library.dto.PageDto;
 import com.jb.library.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ public class PageController {
     private PageService pageService;
 
     @GetMapping("/findAll")
-    public List<Page> findAll(){
+    public List<PageDto> findAll(){
         return pageService.find();
     }
 }
