@@ -13,10 +13,6 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
-        this.bookRepository = bookRepository;
-    }
-
     public List<Book> findAll() {
         return bookRepository.findAll();
     }

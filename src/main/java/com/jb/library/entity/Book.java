@@ -7,16 +7,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.io.Serializable;
 import java.util.Set;
 
-@Data
-@Builder
-@AllArgsConstructor
+
 @NoArgsConstructor
+@AllArgsConstructor
+
+@Builder
 @Entity
+@Data
+
 @Table(name = "book")
-public class Book {
+public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -28,15 +31,22 @@ public class Book {
     @Column
     private int pageCount;
 
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Page> pages;
 
-    @ManyToMany(targetEntity = Author.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Author> authorList = new HashSet<>();
 
-    @ManyToMany(targetEntity = Gender.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private Set<Gender> genersList = new HashSet<>();
-
-    @OneToMany(mappedBy = "books")
-    private Set<LoanRecord> loadRecord = new HashSet<>();
+//    @ManyToMany(targetEntity = Author.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
+//    @JsonIgnore
+//    private Set<Author> authorList = new HashSet<>();
+//
+//    @ManyToMany(targetEntity = Gender.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JsonIgnore
+//    private Set<Gender> genersList = new HashSet<>();
+//
+//    @OneToMany(mappedBy = "books")
+//    @JsonIgnore
+//    private Set<LoanRecord> loadRecord = new HashSet<>();
 
 
 }
+
